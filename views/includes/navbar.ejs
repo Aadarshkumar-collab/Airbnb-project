@@ -1,0 +1,208 @@
+<style>
+  .search-btn{
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .search-btn:hover {
+    background-color: #fe424d;
+    color: #fff;
+  }
+  .search-btn i{
+    display: inline;
+    margin-right: 0.5em;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: 0.9rem;
+  }
+
+  /* // */
+  
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 10rem;
+}
+
+.search-options {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    overflow: hidden;
+    align-items: center;
+} 
+
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.search-option {
+    padding: 10px 20px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+.search-option:last-child {
+    border-right: none;
+}
+
+.search-option label {
+    display: block;
+    font-size: 12px;
+    color: #0c0c0c;
+    margin-bottom: 5px;
+}
+
+.search-option input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    background-color: transparent;
+}
+
+.search-btn {
+    background-color: #ff385c;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 80%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f3f3f3;
+    font-size: 18px;
+}
+
+  /* Profile dropdown button */
+.profile-button {
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 40px;
+  background-color: white;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  min-width: 150px;
+  border: 1px solid #e3e0e0;
+}
+
+/* Align icons in the button */
+.profile-button i {
+  font-size: 1.2rem;
+}
+
+/* Navbar padding and design */
+.navbar {
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Profile icon and button hover effects */
+.profile-button:hover {
+  background-color: #f3f3f3;
+}
+
+/* Dropdown items styling */
+.dropdown-item {
+  font-size: 16px;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover {
+  background-color: #f3f3f3;
+}
+
+
+</style>
+<nav class="navbar navbar-expand-md bg-body-Light border-bottom sticky-top">
+  <div class="container-fluid">
+
+    
+    <!-- <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a> -->
+    <button class="navbar-toggler" 
+    type="button"
+     data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup" 
+      >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="navbar-brand nav-link" href="/listings">
+      <img src="/images/Airbnb-Logo.wine.png" alt="Airbnb Logo" class="logo">
+    </a>
+    </a>
+          
+          <!-- <a class="nav-link" href="/listings">Explore</a> -->
+
+          <div class="search-container">
+            <div class="search-options">
+                <div class="search-option">
+                    <label><b>Where</b></label>
+                    <input type="text" placeholder="Search destinations">
+                </div>
+                <div class="search-option">
+                    <label><b>Date</b></label>
+                    <input type="text" placeholder="Add dates">
+                </div>
+                <div class="search-option">
+                    <label><b>Who</b></label>
+                    <input type="text" placeholder="Add guests">
+                </div>
+                <button class="search-btn">
+                    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                </button>
+            </div>
+       </div>
+
+        </div>
+
+        
+        <!-- <div class="navbar-nav ms-auto"> 
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-inp"
+             type="search"
+              placeholder="Search Destinations" 
+              aria-label="Search">
+            <button class="btn search-btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form> -->
+          
+         
+        </div>
+       
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        
+          <!-- Dropdown Menu for Sign up/Login or Logout -->
+          <div class="dropdown">
+            <button class="btn btn-light rounded-pill d-flex align-items-center profile-button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-globe me-2"></i>
+              <i class="fas fa-bars"></i>
+              <i class="fas fa-user-circle ms-2"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+              <% if (!CurrUser) { %>
+                <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
+                <li><a class="dropdown-item" href="/login">Log In</a></li>
+              <% } %>
+              <% if (CurrUser) { %>
+                <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+              <% } %>
+            </ul>
+      </div>
+    </div>
+  </nav>
