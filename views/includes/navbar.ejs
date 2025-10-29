@@ -1,22 +1,28 @@
 <style>
-  .search-btn{
-    background-color: #fe424d;
+  /* Use a more specific selector to avoid Bootstrap .btn conflicts and remove duplicate rules */
+  .btn.search-btn{
+    background-color: #ff385c;
     color: #fff;
+    border: none;
+    padding: 8px 14px;
     border-radius: 25px;
-    padding: 0 1rem 0 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 15px;
   }
-  .search-btn:hover {
-    background-color: #fe424d;
+  .btn.search-btn:hover {
+    background-color: #e0324a;
     color: #fff;
   }
-  .search-btn i{
-    display: inline;
-    margin-right: 0.5em;
+  .btn.search-btn i{
+    display: inline-block;
   }
 
   .search-inp {
     border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
+    padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
 
@@ -69,20 +75,7 @@
     background-color: transparent;
 }
 
-.search-btn {
-    background-color: #ff385c;
-    border: none;
-    padding: 12px 15px;
-    border-radius: 80%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #f3f3f3;
-    font-size: 18px;
-}
-
-  /* Profile dropdown button */
+/* Profile dropdown button */
 .profile-button {
   border: 1px solid #ddd;
   padding: 0.5rem 1rem;
@@ -130,7 +123,7 @@
   <div class="container-fluid">
 
     
-    <!-- <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a> -->
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
     <button class="navbar-toggler" 
     type="button"
      data-bs-toggle="collapse"
@@ -139,46 +132,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="navbar-brand nav-link" href="/listings">
-      <img src="/images/Airbnb-Logo.wine.png" alt="Airbnb Logo" class="logo">
-    </a>
-    </a>
-          
-          <!-- <a class="nav-link" href="/listings">Explore</a> -->
-
-          <div class="search-container">
-            <div class="search-options">
-                <div class="search-option">
-                    <label><b>Where</b></label>
-                    <input type="text" placeholder="Search destinations">
-                </div>
-                <div class="search-option">
-                    <label><b>Date</b></label>
-                    <input type="text" placeholder="Add dates">
-                </div>
-                <div class="search-option">
-                    <label><b>Who</b></label>
-                    <input type="text" placeholder="Add guests">
-                </div>
-                <button class="search-btn">
-                    <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                </button>
-            </div>
-       </div>
-
-        </div>
-
+     <h3> Wanderlust</h3>
         
-        <!-- <div class="navbar-nav ms-auto"> 
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 search-inp"
-             type="search"
-              placeholder="Search Destinations" 
-              aria-label="Search">
-            <button class="btn search-btn" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>Search</button>
-          </form> -->
+        <div class="navbar-nav ms-auto"> 
+         <form class="d-flex" role="search" action="/listings/search" method="GET">
+  <input
+    class="form-control me-2 search-inp"
+    type="search"
+    name="q"
+    placeholder="Search Destinations"
+    aria-label="Search"
+  />
+  <button class="btn search-btn" type="submit">
+    <i class="fa-solid fa-magnifying-glass"></i> Search
+  </button>
+</form>
+
           
          
         </div>
@@ -203,6 +172,8 @@
                 <li><a class="dropdown-item" href="/logout">Log Out</a></li>
               <% } %>
             </ul>
-      </div>
+          </div>
+        </div>
     </div>
+  </div>
   </nav>
