@@ -24,25 +24,3 @@ module.exports.reviewSchema = Joi.object({
 
 
 
-
-
-
-
-// Corrected export
-// module.exports = { listingSchema };
-
-// const Joi = require('joi'); // Import Joi
-// const review = require('./models/review');
-
-// // Define your Joi schema
-// const listingSchema = Joi.object({
-//   listing: Joi.object({
-//     title: Joi.string().required(),
-//     price: Joi.number().required().min(0),
-//     description: Joi.string().required(),
-//     location: Joi.string().required(),
-//   }).required(),
-// });
-
-// // module.exports = listingSchema;
-

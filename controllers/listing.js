@@ -10,6 +10,43 @@ module.exports.index = async (req, res) => {
     res.render("listings/index.ejs", { allListings, CurrUser: req.user }); // Pass CurrUser
 };
 
+// Search route - dynamic search across multiple fields
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
+
+module.exports.searchListings = async (req, res) => {
+  const { q } = req.query;
+  const acceptJson = req.xhr || (req.headers.accept && req.headers.accept.indexOf('application/json') !== -1);
+
+  if (!q || q.trim() === "") {
+    // If no query, show all listings
+    const allListings = await Listing.find({});
+    if (acceptJson) {
+      const payload = allListings.map(l => ({ _id: l._id, title: l.title, price: l.price, image: l.image }));
+      return res.json({ allListings: payload, query: '' });
+    }
+    return res.render("listings/index.ejs", { allListings, CurrUser: req.user });
+  }
+  const safe = escapeRegex(q);
+  const regex = new RegExp(safe, "i");
+  const allListings = await Listing.find({
+    $or: [
+      { title: regex },
+      { location: regex },
+      { country: regex },
+      { description: regex }
+    ]
+  });
+
+  if (acceptJson) {
+    const payload = allListings.map(l => ({ _id: l._id, title: l.title, price: l.price, image: l.image }));
+    return res.json({ allListings: payload, query: q });
+  }
+
+  res.render("listings/index.ejs", { allListings, query: q, CurrUser: req.user });
+};
+
 module.exports.renderNewForm = (req, res) => {
     res.render("listings/new.ejs");
 };

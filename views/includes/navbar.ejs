@@ -132,7 +132,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-     <h3> Wanderlust</h3>
+     <h3> Rentify</h3>
         
         <div class="navbar-nav ms-auto"> 
          <form class="d-flex" role="search" action="/listings/search" method="GET">
@@ -142,6 +142,7 @@
     name="q"
     placeholder="Search Destinations"
     aria-label="Search"
+    value="<%= typeof query !== 'undefined' ? query : '' %>"
   />
   <button class="btn search-btn" type="submit">
     <i class="fa-solid fa-magnifying-glass"></i> Search
